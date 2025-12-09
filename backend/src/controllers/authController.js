@@ -13,13 +13,18 @@ export const loginUser = async(req, res) => {
     const {email, password} = req.body;
     
     const user = await User.findOne({email});
-    if(!user) return res.json({message: "Invalid Email ID"});
+   if (!user) return res.status(400).json({ message: "Invalid email" });
 
     const checkPwd = await bcrypt.compare(password, user.password);
-    if(!checkPwd) return res.json({message: "Invalid password"});
+    if(!checkPwd) return res.status(400).json({ message: "Invalid password" });
 
     const token = jwt.sign({id: user._id}, process.env.JWT_SECRET, {
         expiresIn: "1d"
     })
-    res.json(token);
+    res.json({token});
+}
+
+export const getMe = async (req, res) => {
+    const user = await User.findById(req.user.id).select("-password")
+    res.json(user);
 }
