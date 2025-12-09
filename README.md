@@ -38,9 +38,13 @@ This project is designed to demonstrate **full-stack development**, **authentica
 ## 🏗️ Tech Stack
 
 ### **Frontend**
-- React.js  
-- Axios  
-- React Router  
+- React.js (Vite)
+- Tailwind CSS v4
+- Axios
+- React Router DOM
+- Zustand (State Management)
+- React Hot Toast (Notifications)
+- Heroicons
 
 ### **Backend**
 - Node.js  
