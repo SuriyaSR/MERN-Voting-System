@@ -4,9 +4,10 @@ const pollSchema = new mongoose.Schema({
     title: String,
     options:[{
         text: String, 
-        votes: {type:Number, default: 0}
+        votes: {type:Number, default: 0},
     }],
-    voters: [{type: mongoose.Schema.Types.ObjectId, ref: "User"}]
+    voters: [{type: mongoose.Schema.Types.ObjectId, ref: "User"}],
+    createdBy: {type: mongoose.Schema.Types.ObjectId, ref: "User"}
 })
 
 export default mongoose.model("Poll", pollSchema)

@@ -21,4 +21,14 @@ app.get("/", (req, res) => {
   res.send("Backend is working");
 });
 
+// GLOBAL ERROR HANDLER
+app.use((err, req, res, next) => {
+    const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+    res.status(statusCode);
+    res.json({
+        message: err.message,
+        stack: process.env.NODE_ENV === 'production' ? null : err.stack,
+    });
+});
+
 app.listen(5000, () => console.log("Server running on port 5000"));
