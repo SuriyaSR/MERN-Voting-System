@@ -5,6 +5,8 @@ import { connectDB } from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js"
 import pollRoutes from "./routes/pollRoutes.js"
 
+const PORT = process.env.PORT || 5000;
+
 dotenv.config();
 connectDB();
 
@@ -31,4 +33,4 @@ app.use((err, req, res, next) => {
     });
 });
 
-app.listen(5000, () => console.log("Server running on port 5000"));
+app.listen(PORT, () => console.log("Server running on port 5000"));
